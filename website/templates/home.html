@@ -1,0 +1,41 @@
+{% extends "base.html"%}
+
+{% block title %}Home Page{% endblock %}
+
+ {% block content %}
+  <style>
+      .title {
+          margin: 5px;
+      }
+
+      .docto {
+          flex: 20%;
+          padding: 10px;
+          margin: 5px;
+          background-color: #f3f3f3;
+          inline-size: 100%;
+      }
+
+
+      .name a {
+          color: #00a36f;
+          text-decoration: none;
+      }
+
+      
+  </style>
+  
+  
+{% for edhukku in summa %}
+<b>
+  <h1 class="name">Patient Name: {{edhukku.patientname}}</h1>
+</b>
+<div class="docto">
+    <p><b>Date:{{ edhukku.date }}</b></p>
+    <p><b>Time:{{ edhukku.time }}</b></p>
+<p>Phone No:{{ edhukku.patient_phoneNo }}</p>
+ 
+  </div>
+</div>
+{% endfor %}
+ {% endblock %}

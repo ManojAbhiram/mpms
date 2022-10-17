@@ -1,0 +1,33 @@
+{% extends "base.html"%}
+
+{% block title %}Login{% endblock %}
+
+ {% block content %}
+ 
+  <form method="POST">
+      <h3 align="center">Login</h3>
+      <div class="form-group">
+          <Label for="email">Email Address</Label>
+          <input type="email" 
+          class="form-control" 
+          id="email" 
+          name="email" 
+          placeholder="Enter Email"/> 
+      </div>
+     
+      <div class="form-group">
+          <Label for="password">Password</Label>
+          <input type="password" 
+          class="form-control" 
+          id="password" 
+          name="password" 
+          placeholder="Enter Password"/> 
+      </div>
+    
+      <br />
+      <button type="submit" class="btn btn-primary">Login</button>
+      <br />
+        <img src="../static/medical.jpeg" width="800" height="500">
+
+ 
+ {% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width ,initial-scale=1" >
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    
+    <title>Confirmed Appointments</title>
+    </head>
+    <body>
+    <style>
+        .title {
+            margin: 5px;
+        }
+        
+        .content {
+            margin: 5px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .docto {
+            flex: 20%;
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3;
+            inline-size: 100%;
+        }
+
+        .Address {
+            padding: 10px;
+            margin: 5px;
+            background-color: #ffffff;
+            color: #004835;
+        }
+
+        .name a {
+            color: #00a36f;
+            text-decoration: none;
+        }
+
+        
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+          <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" id="home" href="/home_patient">Home</a>
+          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <a class="nav-item nav-link" id="confirmed" href="/confirmed_appointment">Confirmed Appointments</a>
+          {% endif %}
+          
+              </div>
+          </div>
+  
+    </nav>
+    
+    
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+{% for edhukku in summa %}
+<b>
+  <h1 class="name">Doctor {{edhukku.Doctorname}}</h1>
+</b>
+<div class="docto">
+    <p><b>Date:{{ edhukku.date }}</b></p>
+    <p><b>Time:{{ edhukku.time }}</b></p>
+<p>Phone No:{{ edhukku.Doctor_phoneNo }}</p>
+ 
+  <div class="Address">
+      <h4>Address</h4>
+      <p>{{ edhukku.ClinicAddress }}</p>
+  </div>
+</div>
+ 
+{% endfor %}
+ <style>
+ body {
+     
+      background-image: url('../static/blue.jpg');
+       
+    }
+       
+</style>
+
+</html>
+    
